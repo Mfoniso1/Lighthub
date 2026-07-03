@@ -40,7 +40,7 @@ The frontend is built with Next.js and TailwindCSS.
 2. Authorize GitHub and select the `Mfoniso1/Lighthub` repository.
 3. Vercel will automatically detect that it is a Next.js project.
 4. **Before clicking Deploy**, expand the **Environment Variables** section and add:
-   - **Name**: `BACKEND_URL`
+   - **Name**: `NEXT_PUBLIC_BACKEND_URL`
    - **Value**: *(The Render URL you copied in Step 1, with NO trailing slash)*
 5. Click **Deploy**.
 

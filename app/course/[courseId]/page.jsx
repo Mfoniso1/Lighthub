@@ -26,7 +26,8 @@ export default function StudySpacePage() {
   const fetchFiles = async () => {
     try {
       setLoadingFiles(true);
-      const res = await fetch(`/api/course-files?course_id=${courseId}`);
+      const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const res = await fetch(`${API_BASE}/api/course-files?course_id=${courseId}`);
       if (!res.ok) throw new Error("Failed to load files");
       const data = await res.json();
       if (data.files) {
@@ -47,7 +48,8 @@ export default function StudySpacePage() {
       formData.append('course_id', courseId);
       formData.append('file', file);
       
-      const res = await fetch('/api/upload', {
+      const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const res = await fetch(`${API_BASE}/api/upload`, {
         method: 'POST',
         body: formData
       });
@@ -87,7 +89,8 @@ export default function StudySpacePage() {
           content: m.text
         }));
 
-      const res = await fetch('/api/chat', {
+      const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const res = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

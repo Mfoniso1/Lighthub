@@ -19,7 +19,8 @@ export default function PanicModePage() {
   const fetchPanicData = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/panic-mode', {
+      const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const res = await fetch(`${API_BASE}/api/panic-mode`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

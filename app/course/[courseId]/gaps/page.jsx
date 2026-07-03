@@ -39,7 +39,8 @@ Module 3: Non-Volatile Memory Registers
   const runGapDetection = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/detect-gaps', {
+      const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const res = await fetch(`${API_BASE}/api/detect-gaps`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -62,7 +63,8 @@ Module 3: Non-Volatile Memory Registers
   const handlePatchGap = async (topicName) => {
     try {
       setGeneratingForId(topicName);
-      const res = await fetch('/api/patch-gap', {
+      const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const res = await fetch(`${API_BASE}/api/patch-gap`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
