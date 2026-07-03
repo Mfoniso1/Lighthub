@@ -1,0 +1,390 @@
+﻿Project Charter
+PROJECT CHARTER
+AI Academic Survival Copilot
+
+
+“From Incomplete Lectures to Exam Readiness”
+A 3-Day Hackathon MVP Build — Project Charter & Execution Blueprint
+Built for African Universities.
+________________
+Table of Contents
+
+
+
+
+________________
+
+
+1. Executive Summary
+An AI Academic Survival Copilot built for students navigating one of the most under-addressed realities in African higher education: incomplete curriculum delivery. Across federal universities, lecturers routinely fail to cover full semester syllabi, teaching is often rushed or generalized, and exam preparation becomes a guessing game rather than a structured process. It closes this gap directly.
+Rather than assuming a complete, well-structured educational pipeline — the assumption baked into most global EdTech and AI study tools — this tool is designed for fragmentation. Students upload whatever they actually have: scanned notes, lecturer PDFs, WhatsApp screenshots, past questions, and voice recordings. The system reconstructs a coherent learning pathway from these fragments, identifies what has not been taught, and estimates what is likely to appear on the exam.
+The product is anchored by three hero capabilities: the Curriculum Gap Detector, the Exam Probability Engine, and the AI Survival Tutor, supported by a standout urgency feature, Panic Mode, for 48-hour exam crunches. This charter defines the strategic rationale, technical architecture, and 3-day delivery plan for building a working, judge-ready MVP that demonstrates category-defining innovation while remaining realistic to execute under hackathon constraints.
+It does not teach a complete curriculum. It rebuilds the one the student actually received — and tells them exactly what to do about the rest.
+2. Problem Statement
+Nigerian and African university students face a structural, systemic learning gap that has nothing to do with their own effort or ability.
+The Core Problem
+* Incomplete curriculum delivery: Lecturers frequently do not finish the semester's official course outline due to time constraints, strikes, administrative disruption, or scheduling gaps.
+* Inconsistent teaching quality: Even delivered content is often rushed, generalized, or pitched at a pace that assumes strong prior preparation, leaving slower learners behind.
+* Fragmented learning materials: Students accumulate a patchwork of scanned handouts, PDFs, WhatsApp forwards, personal notes, and past questions with no unifying structure.
+* Opaque exam expectations: Students rarely know which topics are likely to be tested, forcing broad, inefficient revision instead of targeted preparation.
+* Infrastructure constraints: Poor and expensive internet access and unreliable electricity limit how much data-heavy or session-dependent studying is realistic.
+The compounding effect is educational inequality: a student's exam outcome depends less on their diligence and more on which lecturer they were assigned and how much of the syllabus that lecturer happened to complete. This is the problem we're building to solve.
+3. Market Context (Africa-Specific)
+Nigeria's tertiary education system serves millions of students across federal, state, and private universities, with federal institutions representing a dense, underserved market for tools built around local realities rather than imported assumptions.
+Structural Realities Shaping the Market
+* Frequent disruptions to the academic calendar (strikes, resource shortages) routinely compress teaching time within a semester.
+* Large lecture-hall class sizes limit individualized attention and personalized pacing.
+* Mobile-first, data-conscious student behavior: most students access the internet primarily through smartphones on limited data bundles.
+* A strong existing culture of informal knowledge-sharing — WhatsApp study groups, shared PDFs, “spot the question” past-question culture — that it can formalize rather than replace.
+* Low penetration of AI-native study tools purpose-built for the African academic calendar and grading culture, versus high awareness of global tools like ChatGPT, which are used informally but not structured around curriculum gaps.
+Why Now
+Smartphone penetration and generative AI awareness among Nigerian undergraduates have both risen sharply, while no dominant local product has yet claimed the “exam survival” category. Global players are not built for fragmented, disrupted curricula — they assume the curriculum was actually taught. This is an open strategic gap.
+4. Vision Statement
+A future where no African student's academic success is determined by how much of the syllabus their lecturer managed to teach.
+This tool envisions a generation of students equipped with an AI copilot that adapts to the real, imperfect conditions of their education — turning fragmented, incomplete learning experiences into structured, confident exam readiness, regardless of institutional or infrastructural limitations.
+5. Mission Statement
+To give every student the tools to reconstruct their own complete education from whatever fragments they have — and to walk into every exam knowing exactly what matters most.
+The mission is executed through three commitments: meeting students where their materials actually are (not where an idealized curriculum assumes they should be), translating fragmented content into a clear map of covered and missing knowledge, and converting that map into a prioritized, time-boxed action plan students can trust under real academic pressure.
+6. Product Overview
+This is a web-based AI platform where students upload the fragmented materials available to them for a course — lecturer slides or PDFs, personal notes, scanned handwriting, past questions, and (optionally) voice recordings — and receive three coordinated outputs: a diagnostic map of curriculum coverage, a probability-ranked list of likely exam topics, and a conversational AI tutor grounded specifically in the student's own uploaded materials via retrieval-augmented generation (RAG).
+It is explicitly positioned as an academic survival tool, not a general-purpose study assistant or a note-organizing app. Every feature is designed around a single question: given incomplete teaching, what does this student need to do right now to be ready for the exam?
+Dimension
+	Description
+	Product Category
+	AI Academic Survival Copilot (EdTech / Applied AI)
+	Primary Users
+	Undergraduate students at Nigerian and African federal universities
+	Core Mechanism
+	RAG pipeline over student-uploaded, fragmented course materials
+	Signature Capability
+	Curriculum Gap Detection against the official course outline
+	Delivery Format
+	Web application (mobile-responsive), built as a 3-day hackathon MVP
+	Positioning
+	Not “African NotebookLM” — an exam-survival and gap-recovery system
+	7. Core Value Proposition
+“From incomplete lectures to exam readiness.”
+Its value proposition rests on solving a problem no competitor targets directly: not “help me study better,” but “tell me what I was never actually taught, and what to do about it before the exam.”
+* For students: Confidence and clarity replace anxiety and guesswork. Students know precisely what's covered, what's missing, and what's likely to be examined.
+* For time-constrained learners: Panic Mode converts 48 hours of dread into a structured, prioritized revision sprint.
+* For slower learners: The AI Survival Tutor re-explains concepts with local analogies and plain language, at the student's own pace, without judgment.
+* For institutions (future): Aggregated, anonymized gap data reveals systemic curriculum delivery issues that departments can act on.
+8. User Personas
+Persona 1: Ada, the Overwhelmed Finalist
+* 300-level Computer Science student at UNN. Her lecturer covered roughly 60% of the outline before the semester ended.
+* Owns a mid-range Android phone, uses limited weekly data bundles, and studies mostly at night.
+* Needs: a clear picture of what she's missing and a fast way to close the gap before exams.
+Persona 2: Tunde, the Last-Minute Crammer
+* 200-level Economics student who consistently starts serious revision 2–3 days before an exam.
+* Highly motivated under pressure but wastes time studying low-yield topics.
+* Needs: Panic Mode — a ruthless, prioritized cram plan built from past questions and topic emphasis.
+Persona 3: Ngozi, the Slow-Paced Learner
+* First-year university student who struggles when lectures move fast or assume prior knowledge.
+* Often too shy to ask questions repeatedly in class.
+* Needs: a patient AI tutor that explains concepts multiple ways, using relatable local examples, without limits.
+9. Key Pain Points
+Pain Point
+	Current Reality
+	Tool's Response
+	Unknown curriculum gaps
+	Students don't know what wasn't taught until the exam reveals it
+	Curriculum Gap Detector compares outline vs. materials
+	Exam unpredictability
+	Broad, unfocused revision across the entire syllabus
+	Exam Probability Engine ranks likely topics
+	No one to ask
+	Large classes, shy students, no accessible tutor
+	AI Survival Tutor answers anytime, in plain language
+	Last-minute panic
+	Disorganized, anxious cramming with no structure
+	Panic Mode generates a 48-hour revision sprint
+	Fragmented materials
+	Notes, PDFs, and screenshots scattered across devices
+	Unified upload and AI-structured knowledge base
+	Data and infrastructure limits
+	Expensive data, unreliable power
+	Lightweight, text-first, mobile-responsive design
+	10. Functional Requirements
+10.1 Material Ingestion
+* Users can upload PDFs, scanned images, and text notes tied to a specific course.
+* System extracts text from digital PDFs and performs OCR on scanned/handwritten images.
+* Extracted content is chunked and embedded into a per-course vector store.
+10.2 Curriculum Gap Detection
+* Users can input or upload the official course outline/syllabus.
+* System maps uploaded material content against outline topics using semantic similarity.
+* System outputs a coverage percentage and a ranked list of likely-missing topics.
+10.3 AI Survival Tutor (RAG Chat)
+* Users can ask natural-language questions about their course.
+* System retrieves relevant chunks from the student's own materials and generates grounded answers.
+* Tutor explains concepts in plain language with local, undergraduate-friendly analogies.
+10.4 Exam Panic Mode
+* Users can trigger a dedicated “Exam in 48 Hours” mode from the dashboard.
+* System generates a prioritized revision schedule, a likely-questions list, and cram-focused quiz prompts.
+10.5 Dashboard (Optional/Stretch)
+* Users can view coverage percentage, topic priority list, and study progress in one screen.
+11. Non-Functional Requirements
+Category
+	Requirement
+	Performance
+	RAG chat responses return within 5–10 seconds under demo conditions
+	Usability
+	Mobile-responsive UI usable on mid-range Android screens
+	Reliability
+	Graceful handling of failed OCR/parsing with clear user feedback
+	Data Efficiency
+	Minimized payload sizes to respect limited data bundles
+	Scalability (design intent)
+	Per-course vector namespaces to support multi-tenant growth post-hackathon
+	Transparency
+	Probability outputs clearly labeled as estimates, never guarantees
+	Security
+	Uploaded materials isolated per user/course; no cross-user leakage
+	12. Detailed Feature Breakdown
+12.1 Hero Feature 1 — Curriculum Gap Detector
+The system ingests the official course outline alongside all uploaded materials, then uses semantic comparison to determine which outline topics are substantively represented in the materials versus absent or only superficially mentioned.
+* Input: Course outline (text or PDF) + all uploaded lecture materials for that course.
+* Process: Topic extraction from the outline, semantic matching against embedded material chunks, coverage scoring per topic.
+* Output: Overall coverage percentage (e.g., “Covered: 62%”) and a ranked list of likely-missing high-priority topics (e.g., Trees, Graph Traversal, Dynamic Programming).
+This is its core innovation and primary differentiator — no mainstream EdTech or AI study tool performs outline-versus-materials gap analysis for the African context.
+12.2 Hero Feature 2 — Exam Probability Engine
+Using uploaded past questions, topic frequency across those questions, and emphasis signals in lecture materials (repetition, worked examples, highlighted terms), the system estimates the relative likelihood that each topic appears on the upcoming exam.
+* Input: Past questions, lecture materials, gap-detection output.
+* Process: Frequency analysis of topics across past questions combined with emphasis weighting from materials.
+* Output: A ranked “High Probability Topics” list with percentage estimates (e.g., Deadlocks 82%, CPU Scheduling 75%).
+* Critical framing: All outputs must be clearly labeled as probability estimates based on historical patterns — never presented as guaranteed exam predictions.
+12.3 Hero Feature 3 — AI Survival Tutor
+A conversational RAG-powered tutor grounded entirely in the student's own uploaded materials, so answers reflect what was actually taught rather than a generic external syllabus.
+* Sample interactions: “Explain recursion,” “What topics matter most?” “What am I missing?” “Help me revise in 2 days.”
+* Tone: Simple language, local analogies, undergraduate-friendly examples.
+* Future language support: Nigerian Pidgin, Yoruba, Hausa, and Igbo, to widen accessibility beyond English-only instruction.
+12.4 Standout Feature — Panic Mode
+A single high-visibility action — “EXAM IN 48 HOURS” — that reorients the entire platform around urgent, triaged revision.
+* Generates a prioritized topic list weighted toward high-probability, low-coverage areas.
+* Builds a rapid, time-boxed revision schedule across the remaining hours.
+* Surfaces likely questions drawn from the Exam Probability Engine.
+* Produces cram-focused quizzes targeting the highest-priority gaps first.
+Panic Mode is the emotional and demo centerpiece of the product — it converts anxiety into a concrete plan within seconds, and it demonstrates all three hero features working together in a single, visceral moment.
+12.5 Deprioritized Features (Post-MVP)
+* Quiz generation beyond Panic Mode cram quizzes (stretch goal)
+* Slide and podcast/video generation
+* Study Squads (3–8 student accountability groups) and social learning spaces
+* Leaderboards, push notifications, and native mobile app
+These were deliberately cut from hackathon scope — see Section 13 for full MVP rationale.
+13. MVP Scope
+With only 3 days of build time, Our MVP is deliberately narrow and depth-focused rather than broad and shallow. The goal is a convincing, working prototype that proves the core innovation — not a feature-complete startup.
+Must-Have (In Scope)
+* 1. Course Material Upload & Parsing — PDF text extraction and OCR for scanned/handwritten notes, chunked and embedded into a vector store.
+* 2. Curriculum Gap Detector — Outline-vs-materials comparison producing a coverage percentage and missing-topics list.
+* 3. AI Study Copilot (RAG Chat) — Conversational tutor grounded in the student's own uploaded materials.
+* 4. Exam Panic Mode — One-click 48-hour revision plan combining gap data and topic prioritization.
+Optional (If Time Permits)
+* Cram-focused quiz generation within Panic Mode
+* A simple dashboard visualizing coverage percentage and priority topics
+Explicitly Out of Scope
+* Full social networking features (Study Squads, leaderboards, shared groups)
+* Podcast or video generation
+* Push notifications and study reminders
+* Native mobile application
+This scope was chosen because it isolates and proves the three hero differentiators end-to-end, without diluting build time on generic features that any note-taking app could offer.
+14. Technical Architecture
+Layer
+	Technology
+	Frontend
+	Next.js or React with Tailwind CSS
+	Backend
+	Python FastAPI
+	AI Layer
+	LLM API (chat/completions) + embeddings API
+	Vector Database
+	ChromaDB
+	Document Processing
+	PyPDF / pdfplumber for text PDFs; Tesseract OCR for scanned/handwritten content
+	Architectural Principles
+* Per-course vector namespaces so retrieval never mixes content across unrelated courses.
+* Stateless FastAPI endpoints for upload, gap-detection, chat, and panic-mode generation, callable independently for parallel frontend/backend development.
+* Lightweight, mobile-first frontend to respect data and device constraints.
+15. AI System Design
+15.1 Retrieval-Augmented Generation (RAG) Core
+All AI outputs — tutor answers, gap detection, and panic mode plans — are grounded in the student's own uploaded materials via RAG, rather than relying on the LLM's general knowledge alone. This ensures answers reflect what was actually taught in the student's specific class, not a generic external syllabus.
+15.2 Curriculum Gap Detection Logic
+* Extract discrete topics from the official course outline.
+* Embed each outline topic and compare against embedded material chunks using semantic similarity.
+* Assign a coverage score per topic; topics below a defined similarity threshold are flagged as likely-missing.
+* Aggregate topic scores into an overall coverage percentage.
+15.3 Exam Probability Scoring Logic
+* Extract topics referenced in uploaded past questions and tally frequency across available years/sets.
+* Weight topics by frequency plus emphasis signals in materials (repetition, worked examples).
+* Normalize into a relative probability ranking, explicitly labeled as an estimate.
+15.4 Prompt & Tone Design
+* Tutor prompts instruct the model to prioritize plain language, local analogies, and undergraduate-level explanations.
+* Panic Mode prompts instruct the model to be directive and prioritized, not exploratory — urgency-appropriate tone.
+* All probability-related outputs are prompt-constrained to include explicit “estimate, not guarantee” framing.
+16. Data Flow Architecture
+Data pipeline follows a linear ingestion-to-insight flow:
+* 1. Upload Files → Student uploads PDFs, notes, or scanned images for a specific course.
+* 2. Text Extraction → PyPDF/pdfplumber extracts text from digital documents; Tesseract OCR handles scanned/handwritten content.
+* 3. Chunking → Extracted text is split into semantically coherent chunks sized for embedding and retrieval.
+* 4. Embeddings → Each chunk is converted into a vector representation.
+* 5. Vector Database → Embeddings are stored in ChromaDB under a per-course namespace.
+* 6. RAG Engine → User queries or system tasks (gap detection, panic mode) retrieve the most relevant chunks.
+* 7. AI Outputs → Retrieved context is passed to the LLM to generate tutor answers, gap reports, probability rankings, or panic-mode plans.
+17. User Journey
+Journey: Ada Prepares for Her Data Structures Exam
+* Step 1 — Onboarding: Ada creates an account and sets up her “Data Structures” course.
+* Step 2 — Upload: She uploads her lecturer's PDF slides, her handwritten notes (photographed), and two years of past questions.
+* Step 3 — Gap Detection: The tool processes the materials and reports 62% curriculum coverage, flagging Trees, Graph Traversal, and Dynamic Programming as likely-missing.
+* Step 4 — Tutor Interaction: Ada asks the AI Survival Tutor to “explain graph traversal like I'm hearing it for the first time,” and receives a plain-language explanation with a local analogy.
+* Step 5 — Exam Approaches: With two days left, Ada activates Panic Mode.
+* Step 6 — Panic Mode Output: She receives a prioritized 48-hour schedule, a likely-questions list, and cram quizzes targeting her weakest, highest-probability topics.
+* Step 7 — Walks into the Exam: Ada enters the exam hall having spent her limited time on exactly the material most likely to matter.
+18. UI/UX Principles
+* Clarity over decoration: Every screen answers one question at a glance — what's covered, what's missing, what to do next.
+* Urgency-aware design: Panic Mode uses distinct visual treatment (bold color, minimal navigation) to signal a shift into crisis mode.
+* Low-bandwidth first: Minimal imagery, lightweight assets, and fast load times respect real data constraints.
+* Mobile-responsive by default: Most students will access it primarily via smartphone browsers.
+* Trustworthy probability framing: Probability figures are always shown with clear “estimate” labeling and supporting rationale, never as bare, unexplained numbers.
+* Encouraging, non-judgmental tone: Copy and tutor responses avoid shaming language around gaps or missed material — the tone is supportive, not punitive.
+19. Competitive Analysis
+Competitor Type
+	Example
+	Core Assumption
+	Gap This Fills
+	Global AI note tools
+	NotebookLM-style summarizers
+	Complete, well-structured source material exists
+	Handles fragmented, incomplete, low-quality materials
+	Generic AI chatbots
+	ChatGPT used informally by students
+	General knowledge substitutes for course-specific content
+	Grounds every answer in the student's actual materials via RAG
+	Traditional EdTech LMS
+	Institutional learning platforms
+	Full curriculum was delivered and uploaded by staff
+	Works even when the official curriculum was never completed
+	Past-question compilations
+	WhatsApp-shared PDF archives
+	Static, unranked lists with no analysis
+	Ranks topics by probability using frequency and emphasis analysis
+	Tutoring centers / private tutors
+	In-person or informal paid tutoring
+	Requires cost, scheduling, and physical access
+	Free-to-access, always-available, zero-scheduling AI tutor
+	20. Market Differentiation
+Its differentiation is not incremental — it is categorical. Most competitors optimize for organizing or summarizing content that already exists in complete form. It is built for the opposite condition: incomplete, fragmented, and inconsistent source material, which is the actual lived reality for African university students.
+* Not “African NotebookLM”: It does not merely summarize what's uploaded — it diagnoses what's missing relative to an official standard (the course outline) and prescribes action.
+* Diagnostic, not just generative: The Curriculum Gap Detector and Exam Probability Engine produce structured, decision-relevant intelligence, not just generated content.
+* Urgency-native: Panic Mode is purpose-built for the exam-driven survival mode that characterizes real African student behavior — not an afterthought feature.
+* Infrastructure-aware: Designed from the ground up for data costs and connectivity limits, not retrofitted after a data-heavy global product failed to gain local traction.
+21. Risks & Assumptions
+Key Assumptions
+* Students have access to their official course outline, or one can be reasonably reconstructed from department resources.
+* Uploaded materials, even if fragmented, contain sufficient signal for meaningful gap and probability analysis.
+* OCR accuracy on handwritten notes is adequate for semantic matching, even if imperfect.
+* Students are willing to upload personal academic materials to a third-party AI platform.
+Key Risks
+Risk
+	Likelihood
+	Mitigation
+	OCR quality on messy handwriting degrades gap-detection accuracy
+	Medium
+	Set realistic demo expectations; prioritize clearer sample materials for the hackathon demo
+	Course outlines are unavailable or informally structured
+	Medium
+	Allow manual/simplified outline entry as a fallback input method
+	Probability Engine outputs are perceived as guarantees
+	Medium
+	Enforce explicit “estimate” labeling in every UI surface and prompt
+	LLM API costs or rate limits during live demo
+	Low–Medium
+	Cache demo responses as fallback; test with production-like data beforehand
+	3-day timeline compresses testing time
+	High
+	Strict adherence to MVP scope in Section 13; no scope creep
+	22. Success Metrics / KPIs
+Hackathon-Stage Metrics
+* Successful end-to-end demo: upload → gap detection → tutor chat → panic mode, without failure.
+* Gap detection produces a plausible, defensible coverage percentage on sample course data.
+* Judge and audience comprehension of the core differentiation within the first 60 seconds of the pitch.
+Post-Hackathon / Product-Stage Metrics (Future)
+* Number of active courses created per user
+* Gap-detection-to-tutor-engagement conversion rate
+* Panic Mode activation rate in the final 72 hours before exams
+* Self-reported exam confidence before vs. after use
+* Retention across consecutive exam periods (semester-over-semester)
+23. Team Roles & Governance
+Role
+	Owner Responsibilities
+	AI Engineer & Backend Developer
+	FastAPI backend, OCR pipeline, RAG implementation, embedding/vector store integration, AI prompt design
+	Frontend Engineer & Product Designer
+	UI/UX design, React/Next.js implementation, dashboard, Panic Mode visual treatment
+	Project Manager / Product Lead
+	Execution planning, sprint coordination, documentation, pitch strategy, demo flow, judging Q&A
+	Governance Principles
+* Daily stand-up alignment at the start of each of the 3 build days against the roadmap in Section 24.
+* Scope-lock after Day 1 planning: no new features added mid-build without explicit team agreement.
+* Product Lead has final call on scope trade-offs to protect demo readiness.
+24. Delivery Roadmap (3-Day Sprint)
+Day 1 — Foundation
+* Build upload system for course materials
+* Implement PDF parsing and OCR pipeline
+* Set up embeddings generation and vector storage in ChromaDB
+Day 2 — Core Intelligence
+* Implement topic extraction from course outlines and materials
+* Build Curriculum Gap Detection logic and scoring
+* Implement RAG-powered AI Study Copilot chat
+Day 3 — Differentiation & Polish
+* Build Exam Panic Mode end-to-end
+* Build dashboard (if time permits)
+* Full demo polish, rehearsal, and edge-case testing
+25. Demo Strategy
+The demo must land the core insight within the first minute: this is not another AI note tool, it is a diagnostic system for incomplete education.
+Recommended Demo Flow
+* Open with the problem: State plainly that most Nigerian university lecturers do not finish the syllabus — and that this is normalized, unspoken, and educationally devastating.
+* Show the upload: Upload a real (or realistic sample) set of fragmented materials for a course live on stage.
+* Reveal the gap: Show the Curriculum Gap Detector output — “Covered: 62%” — and let the missing-topics list land as the emotional turning point of the demo.
+* Demonstrate the tutor: Ask the AI Survival Tutor a real question live, showing grounded, locally-toned explanation.
+* Close with Panic Mode: Trigger “EXAM IN 48 HOURS” live and show the generated prioritized plan — this is the memorable closing beat.
+Judging Q&A Preparation
+* Be ready to explain the difference between the Exam Probability Engine and simple keyword frequency counting.
+* Be ready to address OCR accuracy limitations honestly, with a clear improvement roadmap.
+* Be ready to explain why probability framing (not “prediction”) was a deliberate ethical design choice.
+26. Future Roadmap (Post-Hackathon)
+Phase 1 — Stabilization (Months 1–2)
+* Harden OCR accuracy and expand supported material formats (audio transcription for voice recordings)
+* Expand course outline ingestion to support more department-specific formats
+* Pilot with a small cohort of UNN students across 2–3 departments
+Phase 2 — Social & Retention Features (Months 3–5)
+* Introduce Study Squads (3–8 students) for shared progress and accountability, replacing the originally-considered large public leaderboard model
+* Add quiz generation, slide generation, and progress tracking dashboards
+* Introduce push notifications and study reminders
+Phase 3 — Language & Reach Expansion (Months 6–12)
+* Add Nigerian Pidgin, Yoruba, Hausa, and Igbo support in the AI Survival Tutor
+* Expand beyond UNN to additional federal universities
+* Explore native mobile app development for offline-first access
+27. Monetization Opportunities
+Model
+	Description
+	Freemium subscription
+	Free tier with limited uploads/queries; paid tier unlocks unlimited Panic Mode use and full course libraries
+	Exam-season passes
+	Low-cost, short-duration premium access timed to exam periods, matching real student cash-flow patterns
+	Institutional partnerships
+	Departments or universities license aggregated, anonymized gap-analysis data to identify curriculum delivery issues
+	Past-question marketplace
+	Verified, structured past-question sets contributed and monetized within the platform
+	Corporate/NGO sponsorship
+	Education-focused sponsors underwrite free access for students in under-resourced departments
+	28. Scalability Strategy
+* Technical scalability: Per-course vector namespaces in ChromaDB (or a migration to a managed vector DB) support horizontal growth across institutions without cross-contamination of retrieval.
+* Content scalability: As more students upload materials for the same course, the Curriculum Gap Detector and Exam Probability Engine become more accurate through aggregated (anonymized) signal — a natural network effect.
+* Geographic scalability: The core architecture is course-outline-agnostic; expansion to new universities requires only new outline ingestion, not architectural change.
+* Language scalability: The RAG and prompt layer is designed to extend to additional local languages without re-architecting the retrieval pipeline.
+29. Closing Strategic Statement
+This tool is not competing to be a better study app. It is solving a problem no one else has named directly: African students are being examined on curricula they were never fully taught, and no tool has been built to close that specific gap.
+The three-day hackathon build is designed to prove one thing convincingly: that an AI system grounded in a student's actual, fragmented materials can diagnose what's missing and prescribe exactly what to do about it — under real time pressure, with real data constraints, for real students at institutions like UNN.
+Every scoping decision in this charter — from the deprioritization of social features to the strict MVP boundary — exists to protect that single, demonstrable proof point. Its long-term opportunity is significant, but its immediate mandate is narrow and clear: build the Curriculum Gap Detector, the Exam Probability Engine, the AI Survival Tutor, and Panic Mode, and prove that incomplete education does not have to mean incomplete exam readiness.
+
+
+From incomplete lectures to exam readiness.
+Page  of

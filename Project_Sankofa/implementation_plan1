@@ -1,0 +1,112 @@
+# Implementation Plan: Full Stack RAG Integration for Project Sankofa
+
+This plan outlines the technical steps to transform the **Project Sankofa** prototype into a fully functional, end-to-end AI Academic Survival Copilot.
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Branding Decision**: We will standardize the app's visual identity on **Sankofa (by Lighthub)** across all UI elements, replacing the conflicting "STUN-FI NOTES" branding.
+>
+> **Anthropic API Key**: The backend requires an `ANTHROPIC_API_KEY` for Claude API requests. You will need to add this key to a local `.env` file.
+>
+> **Tesseract OCR System Dependency**: Tesseract OCR requires a system installation of the Tesseract binary. If Tesseract is not installed on the system, the document processing engine will log a warning and fallback gracefully to standard PDF text extraction.
+
+---
+
+## Proposed Changes
+
+### Component 1: Branding & Next.js Root Navigation
+
+#### [MODIFY] [page.js](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/app/page.js)
+- Replace Next.js boilerplate landing page with a premium landing page describing **Sankofa**.
+- Provide clear call-to-actions linking to the Login page (`/login`) and Dashboard.
+
+#### [MODIFY] [layout.js](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/app/layout.js)
+- Update metadata title to `"Sankofa — AI Academic Survival Copilot"` and description to `"From incomplete lectures to exam readiness"`.
+
+#### [MODIFY] [login/page.jsx](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/app/login/page.jsx)
+- Replace "STUN-FI NOTES" and "STUN-FI HUB" with "Sankofa".
+
+#### [MODIFY] [dashboard/page.jsx](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/app/dashboard/page.jsx)
+- Update headers, navigation bar logos, and footer text to standardise on "Sankofa".
+
+#### [MODIFY] [course/[courseId]/page.jsx](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/app/course/[courseId]/page.jsx)
+- Update branding headers.
+- Wire up the document upload drag-and-drop zone to call the upload API.
+- Wire up the workspace AI Chat sidebar to send queries to the backend RAG API.
+
+#### [MODIFY] [course/[courseId]/gaps/page.jsx](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/app/course/[courseId]/gaps/page.jsx)
+- Update branding headers.
+- Fetch actual gap detection matrix data from the backend.
+- Wire up the "Patch Context Gap" buttons to call the backend patch endpoint.
+
+#### [MODIFY] [panic/page.jsx](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/app/panic/page.jsx)
+- Update branding headers.
+- Fetch the dynamically generated 48-hour schedule, high-yield cheat sheets, and active recall flashcards from the backend.
+
+---
+
+### Component 2: Next.js API Proxy Configuration
+
+#### [MODIFY] [next.config.mjs](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/next.config.mjs)
+- Configure path rewrites to route `/api/:path*` to the local FastAPI backend running at `http://127.0.0.1:8000/api/:path*`.
+
+---
+
+### Component 3: Backend Environment & Dependencies
+
+#### [MODIFY] [requirements.txt](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/requirements.txt)
+- Remove `streamlit`.
+- Add `fastapi`, `uvicorn`, `pydantic`, `pypdf`, `pytesseract`, `multipart` dependencies.
+
+#### [NEW] [.env.example](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/.env.example)
+- Define standard environment variables: `ANTHROPIC_API_KEY`, `HOST` (default `127.0.0.1`), and `PORT` (default `8000`).
+
+---
+
+### Component 4: Python Backend Logic & Services
+
+#### [MODIFY] [file_processing.py](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/file_processing.py)
+- Implement `extract_text_from_pdf(file_path)` using `pdfplumber` or `pypdf`.
+- Implement basic image reading using PIL and optional `pytesseract` OCR, catching errors if Tesseract is not installed locally.
+- Implement text chunker with overlap (e.g., recursive character chunking) for vector ingestion.
+
+#### [MODIFY] [ai_logic.py](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/ai_logic.py)
+- Set up ChromaDB local persistent client.
+- Implement document namespace creation per course.
+- Set up Anthropic Client to call Claude API.
+- Implement semantic similarity mappings between outline topics and course content vector database.
+- Implement RAG conversation generation using Claude API with retrieved database context.
+- Implement Panic Mode generators (producing structured JSON for the 48-hour schedule, flashcards, and study snippets).
+
+#### [MODIFY] [app.py](file:///c:/Users/DELL/Downloads/Lighthub/Project_Sankofa/app.py)
+- Construct FastAPI application with standard CORS setup.
+- Define schemas for request/response handling.
+- Implement endpoints:
+  - `POST /api/upload`: Receives multi-part file uploads (PDF/images) or text outlines, processes them, and indexes them in ChromaDB.
+  - `POST /api/chat`: Runs RAG query search and generates conversational response.
+  - `POST /api/detect-gaps`: Performs similarity scans between outline topics and course materials to calculate coverage percentage.
+  - `POST /api/panic-mode`: Generates 48-hour revision schedules, key summaries, and flashcards.
+
+---
+
+## Verification Plan
+
+### Automated Tests
+- Run validation scripts for checking:
+  1. PDF parsing and text chunking.
+  2. Vector storage insertion and similarity retrieval in ChromaDB.
+  3. API endpoint response structures.
+
+### Manual Verification
+1. Start the FastAPI backend:
+   ```bash
+   python -m uvicorn app:app --reload --port 8000
+   ```
+2. Start the Next.js dev server:
+   ```bash
+   npm run dev
+   ```
+3. Test document ingestion in the browser UI, ask questions in the chat sidebar, check detected gaps, and run Panic Mode to verify that real data is generated and returned by Claude.
